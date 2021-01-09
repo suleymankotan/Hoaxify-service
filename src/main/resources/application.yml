@@ -1,0 +1,31 @@
+server:
+  port: 8010
+spring:
+  application:
+    name: hoaxify-web-service
+  jpa:
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+    open-in-view: false
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQL10Dialect
+  datasource:
+    hikari:
+      maximum-pool-size: 10
+      connection-timeout: 10000
+      minimum-idle: 2
+      idle-timeout: 10000
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/dev}
+    username: ${DB_USER:postgres}
+    password: ${DB_PASS:123456}
+
+verify-code:
+  length: ${VERIFY_CODE_LENGHT:6}
+  leftLimit: ${VERIFY_CODE_LENFT_LIMIT:48}
+  rightLimit: ${VERIFY_CODE_RIGHT_LIMIT:122}
+
